@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Special Message For You ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6eb 0%, #ffc0cb 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+    h1 {
+      color: #ff4d6d;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+    .btn {
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #ff2a55;
+      transform: scale(1.05);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    #loveMessage {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #c9184a;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 24px;
+      animation: floatUp 3s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-200px) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="title">Hey Princess ✨</h1>
+    <p id="subtitle">I have a little surprise for you. Click the button below!</p>
+    <button class="btn" id="revealBtn" onclick="revealLove()">Click Me ❤️</button>
+    <div id="loveMessage">I Love You! ❤️🥰</div>
+  </div>
+
+  <script>
+    function revealLove() {
+      document.getElementById('title').style.display = 'none';
+      document.getElementById('subtitle').style.display = 'none';
+      document.getElementById('revealBtn').style.display = 'none';
+      document.getElementById('loveMessage').style.display = 'block';
+
+      // Create floating hearts animation
+      for (let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = (Math.random() * 20 + 80) + 'vh';
+      heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
